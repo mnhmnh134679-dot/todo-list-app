@@ -26,14 +26,24 @@ def complete_task(task_index):
     else:
         print("Chỉ số công việc không hợp lệ!")
 
+def delete_task(task_index):
+    """Xóa một công việc khỏi danh sách dựa theo chỉ số (index)."""
+    real_index = task_index - 1
+    if 0 <= real_index < len(tasks):
+        removed_task = tasks.pop(real_index)
+        print(f"Đã xóa công việc: '{removed_task['name']}'")
+    else:
+        print("Chỉ số công việc không hợp lệ để xóa!")
+
 # --- Điểm bắt đầu của chương trình ---
 if __name__ == "__main__":
     print("Chào mừng đến với ứng dụng To-Do List!")
     add_task("Học bài Git và GitHub")
     add_task("Làm bài tập thực hành ở nhà")
     
-    # Đánh dấu công việc đầu tiên hoàn thành
+    # Đánh dấu hoàn thành và xóa bớt công việc
     complete_task(1)
+    delete_task(2)
     
-    # Hiển thị lại danh sách
+    # Hiển thị lại danh sách cuối cùng
     list_tasks()
